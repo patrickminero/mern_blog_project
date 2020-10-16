@@ -4,45 +4,70 @@ import NavBar from './components/navbar';
 import Home from './components/home';
 import AllBlogs from './components/allblogs'
 import Create from './components/create'
+import Update from './components/update'
 import Footer from './components/footer';
-import DisplayBlog from './components/blog'
-import Gallery from './components/gallery'
+import DisplayBlog from './components/blog';
+import Gallery from './components/gallery';
+import Test from './components/test'
+import Axios from 'axios';
+
+
 
 class App extends Component {
 state = {
     data: null,
-    loggedIn: true
+    loggedIn: false,
   };
 
   addBlog = (blog) =>{
-    blog.id = Date.now();
-    let blogArray = [...this.state.blogs, blog];
-    this.setState({blogs: blogArray})
+    Axios({
+      url:'blogs/save',
+      method: 'POST',
+      data: blog
+    })
+    .then((res)=>{ 
+      console.log(res)
+    })
+    .catch((error) =>{console.log(error)})
   }
+
+  updateBlog = (blog) =>{
+    console.log(blog)
+    Axios({
+      url:`blogs/${blog.id}`,
+      method: 'PATCH',
+      data: blog
+    })
+    .then((res)=>{ 
+      console.log(res)
+    })
+    .catch((error) =>{console.log(error)})
+  }
+
   deleteBlog = (id) =>{
-    let newBlogs = this.state.blogs.filter(blog => {
-      return blog.id !== id
-    });
-    this.setState({blogs: newBlogs})
+    console.log(id)
+    Axios({
+      url: `blogs/${id}`,
+      method: 'DELETE',
+      data: id,
+    })
+    .then((res)=>{ 
+      console.log(res)
+    })
+    .catch((error) =>{console.log(error)})
   }
 
-  componentDidMount() { 
-      // Call our fetch function below once the component mounts
-    this.callBackendAPI()
-      .then(res => this.setState({ data: res.express }))
-      .catch(err => console.log(err));
-  }
-    // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-  callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
-    const body = await response.json();
-
-    if (response.status !== 200) {
-      throw Error(body.message) 
-    }
-    return body;
-  };
-
+  // loggin = (name, pass) =>{
+  //   let info = {
+  //     "name": name,
+  //     "pass": pass,
+  //   }
+  //   Axios({
+  //     url: `blogs/5f89e131cce45b11f17458ea`,
+  //     method: 'GET',
+  //     data: info,
+  //   }).then(res => console.log(res))
+  // }
   render() {
     return (
       <BrowserRouter>
@@ -50,9 +75,11 @@ state = {
           <NavBar loggedIn={this.state.loggedIn}/>
             <Switch>
               <Route exact path="/"component={Home}/>
-              <Route path="/create" render={(props) => (<Create addBlog={this.addBlog} loggedIn={this.state.loggedIn} props={props} />)}/>
+              <Route exact path="/test"component={Test}/>
+              <Route path="/create" render={(props) => (<Create addBlog={this.addBlog} updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} loggin={this.loggin} props={this.props} />)}/>
+              <Route path="/update" render={(props) => (<Update updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} props={this.props} loggin={this.loggin} />)}/>
               <Route exact path="/all" render={(props) => (<AllBlogs loggedIn={this.state.loggedIn} props={props} deleteBlog={this.deleteBlog}/>)}/>
-              <Route exact path="/gallery" component={Gallery}/>
+              <Route exact path="/gallery" render={(props) =>(<Gallery images={this.state.images} countries={this.state.countries} props={props}/>)}/>
               <Route path="/:id" component={DisplayBlog}/>
             </Switch>
           <Footer/>

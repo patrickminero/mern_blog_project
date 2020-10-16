@@ -1,37 +1,32 @@
 import React, { Component } from 'react'
 
 
-class Create extends Component {
+class Update extends Component {
     state = {
+        id: null,
         title: null,
         img_url: null,
         snippet: null,
         body: null,
         country: null,
-        user_name: null,
-        user_password: null,
     }
     
     handleChange = (e) => {
         this.setState({
-            [e.target.id]: e.target.value,           
+            [e.target.id]: e.target.value,            
         })
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.addBlog(this.state)
-        
+        console.log(this.state)
+        this.props.updateBlog(this.state)
     }
-
-    // handleLoggin = (e) =>{
-    //     e.preventDefault();
-    //     this.props.loggin(this.state.user_name, this.state.user_password)
-    // }
     render(){
         return this.props.loggedIn ? (
             <div className="container">
                 <h2>Add new blog entry</h2>
                 <form className="form-group" onSubmit={this.handleSubmit}>
+                    <input name="id" className="form-control my-3" placeholder="blog id" onChange={this.handleChange} id='id' required/>
                     <input name="title" className="form-control my-3" placeholder="blog title" onChange={this.handleChange} id='title' required/>
                     <input name="country" className="form-control my-3" placeholder="country" onChange={this.handleChange} id='country' required/>
                     <input name="img_url" className="form-control my-3" placeholder="image url" onChange={this.handleChange} id='img_url' required/>
@@ -42,12 +37,11 @@ class Create extends Component {
             </div>
         ) : 
         <div className="container">
-            <form className="form-group" onSubmit={this.handleLoggin}>
-                <input name="user_name" className="form-control my-3" placeholder="please enter username" id="user_name" type="text" onChange={this.handleChange} required/>
-                <input name="user_password" className="form-control my-3" placeholder="please enter password" id="user_password" type="password" onChange={this.handleChange} required/>
-                <button type="submit" className="btn btn-primary my-3" id="loggin">Submit</button>
+            <form>
+                <input name="user_name" className="form-control my-3" placeholder="please enter username" id="user_name" type="text" required/>
+                <input name="user_password" className="form-control my-3" placeholder="please enter password" id="user_password" type="password" required/>
             </form>
         </div>
     }
 }
-export default Create;
+export default Update;

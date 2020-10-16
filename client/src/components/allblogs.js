@@ -10,12 +10,9 @@ class AllBlogs extends React.Component{
         
     
     componentDidMount(){
-        axios.get('https://jsonplaceholder.typicode.com/posts/')
+        axios.get('/blogs')
           .then(res => {
-            console.log(res);
-            this.setState({
-              blogs: res.data.slice(0,10)
-            });
+            this.setState({blogs: res.data})
           })
       }
     
@@ -24,11 +21,11 @@ class AllBlogs extends React.Component{
         const BlogList = blogs.length ? (
             blogs.map(blog => {
                 return(
-                    <div className="card my-3 blog shadow p-3 mb-5 bg-white rounded " key={ blog.id }>
-                        <div className="card-body">
-                        {this.props.loggedIn ? <Link to={'/all'} className="btn btn-sm btn-info float-right" onClick={() => {this.props.deleteBlog(blog.id)}}>delete</Link> : ''}
-                            <Link to={'/' +  blog.id} className="text-decoration-none text-info"><h2 className="card-title">{ blog.title }</h2></Link> 
-                            <h3 className="card-text snippet">{ blog.body }</h3>
+                    <div className="card my-3 blog shadow p-3 mb-5 bg-white rounded " key={blog._id}>
+                        <div className="card-body" key={blog.id}>
+                        {this.props.loggedIn ? <Link to={'/all'} className="btn btn-sm btn-info float-right mx-1" onClick={() => {this.props.deleteBlog(blog._id)}}>Delete</Link> : ''}
+                            <Link to={'/' +  blog._id} className="text-decoration-none text-info"><h2 className="card-title">{ blog.title }</h2></Link> 
+                            <h3 className="card-text snippet">{ blog.snippet }</h3>
                         </div> 
                     </div>
                     )

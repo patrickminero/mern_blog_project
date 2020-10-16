@@ -21,9 +21,11 @@ class NavBar extends React.Component{
                             <Link to="/gallery" className="nav-link text-center">Gallery</Link>
                         </li>
                         {this.props.loggedIn ? <li className="nav-item">
-                            <Link to="/create" className="nav-link text-center">Add Blog</Link>
+                            <Link to="/create" className="nav-link text-center">Create Blog</Link>
                         </li> : ''}
-
+                        {this.props.loggedIn ? <li className="nav-item">
+                            <Link to="/update" className="nav-link text-center">Update Blog</Link>
+                        </li> : ''}
                     </ul>
                 </div>
             </nav>

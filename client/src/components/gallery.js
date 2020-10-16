@@ -6,8 +6,6 @@ class Gallery extends React.Component{
         api_key:'OgQ1koILALSpAUUVwUHbwAnY3-uVlHWF6GicDYOtYdc',
         images: [ ],
         countries: [],
-        gPhotosApiKey:'254835713261-69nmsv9l30oqanctd63flombql0q8s8t.apps.googleusercontent.com',
-        OAuthClientId: '254835713261-69nmsv9l30oqanctd63flombql0q8s8t.apps.googleusercontent.com'
     }
         
     
@@ -16,7 +14,7 @@ class Gallery extends React.Component{
         let imageArray = [];
         let countryArray = [];
         dataArray.forEach(image => {
-            // console.log(dataArray)
+
             image.preview_photos.forEach(element => {
                 let object = {
                     'id': image.id,
@@ -27,12 +25,11 @@ class Gallery extends React.Component{
             })
             // return imageArray
             this.setState({images: imageArray})
-        });
-        dataArray.forEach(image =>{
-            countryArray.push(image.title)
-        })
-        this.setState({countries: countryArray})
-    // console.log(this.state)
+            });
+            dataArray.forEach(image =>{
+                countryArray.push(image.title)
+            })
+            this.setState({countries: countryArray})
 }
     
     render(){
