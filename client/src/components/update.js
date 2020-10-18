@@ -21,9 +21,20 @@ class Update extends Component {
         console.log(this.state)
         this.props.updateBlog(this.state)
     }
+    handleLoggin = (e) =>{
+        e.preventDefault();
+        this.props.loggin(this.state.user_name, this.state.user_password)
+    }
+    handleClick = () =>{
+        this.props.logout()
+    }
+
     render(){
         return this.props.loggedIn ? (
             <div className="container">
+                {this.props.loggedIn ?
+                            <button className="btn btn-info text-center" onClick={this.handleClick}>Logout</button>
+                        : ''}
                 <h2>Add new blog entry</h2>
                 <form className="form-group" onSubmit={this.handleSubmit}>
                     <input name="id" className="form-control my-3" placeholder="blog id" onChange={this.handleChange} id='id' required/>
@@ -37,9 +48,10 @@ class Update extends Component {
             </div>
         ) : 
         <div className="container">
-            <form>
-                <input name="user_name" className="form-control my-3" placeholder="please enter username" id="user_name" type="text" required/>
-                <input name="user_password" className="form-control my-3" placeholder="please enter password" id="user_password" type="password" required/>
+            <form className="form-group" onSubmit={this.handleLoggin}>
+                <input name="user_name" className="form-control my-3" placeholder="please enter username" id="user_name" type="text" onChange={this.handleChange} required/>
+                <input name="user_password" className="form-control my-3" placeholder="please enter password" id="user_password" type="password" onChange={this.handleChange} required/>
+                <button type="submit" className="btn btn-primary my-3" id="loggin">Submit</button>
             </form>
         </div>
     }

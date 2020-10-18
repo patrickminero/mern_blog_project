@@ -23,13 +23,19 @@ class Create extends Component {
         
     }
 
-    // handleLoggin = (e) =>{
-    //     e.preventDefault();
-    //     this.props.loggin(this.state.user_name, this.state.user_password)
-    // }
+    handleLoggin = (e) =>{
+        e.preventDefault();
+        this.props.loggin(this.state.user_name, this.state.user_password)
+    }
+    handleClick = () =>{
+        this.props.logout()
+    }
     render(){
         return this.props.loggedIn ? (
             <div className="container">
+                {this.props.loggedIn ?
+                    <button className="btn btn-info text-center" onClick={this.handleClick}>Logout</button>
+                : ''}
                 <h2>Add new blog entry</h2>
                 <form className="form-group" onSubmit={this.handleSubmit}>
                     <input name="title" className="form-control my-3" placeholder="blog title" onChange={this.handleChange} id='title' required/>

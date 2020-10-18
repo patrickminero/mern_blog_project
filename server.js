@@ -11,6 +11,9 @@ app.use(bodyParser.json())
 const blogsRouter = require('./client/src/routes/blogs.js')
 app.use('/blogs', blogsRouter)
 
+
+
+
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(app.listen(5000, () => console.log(`Listening on port 5000`)))
 

@@ -7,10 +7,14 @@ class DisplayBlog extends Component {
     }
     componentDidMount(){
         let id = this.props.match.params.id
-        // console.log(id)
-        axios.get(`/blogs/${id}`)
+        console.log(id)
+        axios({
+            method: 'GET',
+            url: `blogs/${id}`,
+            data: id,
+        })
           .then(res => {
-            
+            // console.log(res)
             this.setState({blog: res.data})
             // console.log(this.state.blog)
           })

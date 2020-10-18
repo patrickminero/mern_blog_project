@@ -45,7 +45,6 @@ state = {
   }
 
   deleteBlog = (id) =>{
-    console.log(id)
     Axios({
       url: `blogs/${id}`,
       method: 'DELETE',
@@ -57,17 +56,24 @@ state = {
     .catch((error) =>{console.log(error)})
   }
 
-  // loggin = (name, pass) =>{
-  //   let info = {
-  //     "name": name,
-  //     "pass": pass,
-  //   }
-  //   Axios({
-  //     url: `blogs/5f89e131cce45b11f17458ea`,
-  //     method: 'GET',
-  //     data: info,
-  //   }).then(res => console.log(res))
-  // }
+  loggin = (name, pass) =>{
+    let info = {"name": name, "pass": pass}
+    Axios({
+      url: '/blogs/login',
+      method: 'POST',
+      data: info,
+    }).then(res => {
+      if(res.status === 202){
+        this.setState({loggedIn: true})
+      }
+      // console.log(res)
+    })
+  }
+
+  logout = () =>{
+    this.setState({loggedIn: false})
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -76,8 +82,8 @@ state = {
             <Switch>
               <Route exact path="/"component={Home}/>
               <Route exact path="/test"component={Test}/>
-              <Route path="/create" render={(props) => (<Create addBlog={this.addBlog} updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} loggin={this.loggin} props={this.props} />)}/>
-              <Route path="/update" render={(props) => (<Update updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} props={this.props} loggin={this.loggin} />)}/>
+              <Route path="/create" render={(props) => (<Create addBlog={this.addBlog} updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} logout={this.logout} loggin={this.loggin} props={this.props} />)}/>
+              <Route path="/update" render={(props) => (<Update updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} props={this.props} logout={this.logout} loggin={this.loggin} />)}/>
               <Route exact path="/all" render={(props) => (<AllBlogs loggedIn={this.state.loggedIn} props={props} deleteBlog={this.deleteBlog}/>)}/>
               <Route exact path="/gallery" render={(props) =>(<Gallery images={this.state.images} countries={this.state.countries} props={props}/>)}/>
               <Route path="/:id" component={DisplayBlog}/>

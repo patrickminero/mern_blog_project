@@ -1,35 +1,24 @@
-GET http://localhost:5000/blogs
+GET http://localhost:5000/blogs/getblogs
 
 ###
 
-POST http://localhost:5000/blogs
+POST http://localhost:5000/blogs/save
 Content-Type: application/json
 
 {
-    "title": "Weekend in Lisbon", 
-    "country": "Portugal",
-    "img_url": "test",
-    "snippet": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem esse aliquam odio sunt quibusdam maxime!",
-    "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Est esse delectus rem nobis, atque similique provident ipsam nam aperiam, officiis, rerum ipsum ea animi aut. Accusantium quos sint neque? Nobis vitae corrupti dicta eos odit libero? Magni nesciunt, distinctio suscipit, culpa, perspiciatis perferendis et doloribus corrupti voluptatum ratione earum expedita. Molestiae sequi tenetur adipisci numquam inventore praesentium id est officia possimus, repellat dicta aspernatur nihil eos ipsam commodi, explicabo et quos sunt ut aperiam non nesciunt. Quidem odit cum impedit aspernatur qui. Quis, temporibus eaque! Quas debitis, perferendis earum sint eum quam aliquid velit incidunt est libero culpa iusto veniam. Voluptas magni tempore velit in culpa deserunt molestiae alias assumenda quidem repellat unde harum sapiente nihil porro cum quo sed impedit, est perferendis! Maiores quis cum, dolores, eos aperiam nam est ipsam perspiciatis, quisquam laudantium harum assumenda doloremque ex. Fuga perspiciatis dignissimos corporis architecto animi dolorum quis! Animi cupiditate aut tenetur libero obcaecati laborum consequatur sequi amet praesentium? Corrupti sunt nulla sit in neque saepe quis, dolorem, asperiores corporis error ullam eius beatae ipsa vero eaque aspernatur fugit ipsam. Nobis pariatur fugit quas labore cum dolore perspiciatis ab. Dolore explicabo eligendi distinctio consequuntur fugit dolorem nesciunt! Non ex perspiciatis cum alias aut ipsa sapiente beatae sunt impedit ad iure deleniti, dignissimos culpa commodi explicabo modi aspernatur facere? Nam praesentium est cum, maxime culpa perspiciatis, saepe, modi a at voluptas inventore! Molestiae eaque nobis exercitationem aut quos, accusamus rerum odio facere veritatis dolore porro illo ab debitis, magni velit quia ut voluptate nostrum labore. Deserunt quasi vero dolorum ab alias repellendus sit nihil modi sint, dolor aliquid maxime quod error, quos iure porro reiciendis dolores a. Quos, tenetur veniam rerum ut suscipit assumenda autem quae repellendus consequuntur temporibus facere fugit voluptas numquam mollitia accusantium tempore alias soluta molestiae iusto distinctio adipisci!"
-
+    "name": "marta",
+    "password": "lagarta"
 }
 
 ###
-GET http://localhost:5000/blogs/5f89849cccb7954004903d09
-
-###
-DELETE http://localhost:5000/blogs/5f8829decf96d6068c3fec2b
+GET http://localhost:5000/blogs/getusers
 
 ###
 
-PATCH  http://localhost:5000/blogs/5f8989f8b9756840ec0153c7
+POST http://localhost:5000/blogs/login
 Content-Type: application/json
 
 {
-    "title": "Weekend in Lisbon", 
-    "country": "Portugal",
-    "img_url": "https://unsplash.com/photos/i34J3uYsLyU",
-    "snippet": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem esse aliquam odio sunt quibusdam maxime!",
-    "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Est esse delectus rem nobis, atque similique provident ipsam nam aperiam, officiis, rerum ipsum ea animi aut. Accusantium quos sint neque? Nobis vitae corrupti dicta eos odit libero? Magni nesciunt, distinctio suscipit, culpa, perspiciatis perferendis et doloribus corrupti voluptatum ratione earum expedita. Molestiae sequi tenetur adipisci numquam inventore praesentium id est officia possimus, repellat dicta aspernatur nihil eos ipsam commodi, explicabo et quos sunt ut aperiam non nesciunt. Quidem odit cum impedit aspernatur qui. Quis, temporibus eaque! Quas debitis, perferendis earum sint eum quam aliquid velit incidunt est libero culpa iusto veniam. Voluptas magni tempore velit in culpa deserunt molestiae alias assumenda quidem repellat unde harum sapiente nihil porro cum quo sed impedit, est perferendis! Maiores quis cum, dolores, eos aperiam nam est ipsam perspiciatis, quisquam laudantium harum assumenda doloremque ex. Fuga perspiciatis dignissimos corporis architecto animi dolorum quis! Animi cupiditate aut tenetur libero obcaecati laborum consequatur sequi amet praesentium? Corrupti sunt nulla sit in neque saepe quis, dolorem, asperiores corporis error ullam eius beatae ipsa vero eaque aspernatur fugit ipsam. Nobis pariatur fugit quas labore cum dolore perspiciatis ab. Dolore explicabo eligendi distinctio consequuntur fugit dolorem nesciunt! Non ex perspiciatis cum alias aut ipsa sapiente beatae sunt impedit ad iure deleniti, dignissimos culpa commodi explicabo modi aspernatur facere? Nam praesentium est cum, maxime culpa perspiciatis, saepe, modi a at voluptas inventore! Molestiae eaque nobis exercitationem aut quos, accusamus rerum odio facere veritatis dolore porro illo ab debitis, magni velit quia ut voluptate nostrum labore. Deserunt quasi vero dolorum ab alias repellendus sit nihil modi sint, dolor aliquid maxime quod error, quos iure porro reiciendis dolores a. Quos, tenetur veniam rerum ut suscipit assumenda autem quae repellendus consequuntur temporibus facere fugit voluptas numquam mollitia accusantium tempore alias soluta molestiae iusto distinctio adipisci!"
-
+    "name": "patminero",
+    "pass": "#SolarEclipse20!"
 }
