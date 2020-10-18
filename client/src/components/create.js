@@ -1,26 +1,31 @@
 import React, { Component } from 'react'
-
+import { withRouter } from 'react-router-dom'
 
 class Create extends Component {
-    state = {
-        title: null,
-        img_url: null,
-        snippet: null,
-        body: null,
-        country: null,
-        user_name: null,
-        user_password: null,
+    constructor(props){
+        super(props)
+        this.state = {
+            title: null,
+            img_url: null,
+            snippet: null,
+            body: null,
+            country: null,
+            user_name: null,
+            user_password: null,
+        }
     }
+    
     
     handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value,           
         })
     }
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.addBlog(this.state)
-        
+        this.props.history.push('/all')
     }
 
     handleLoggin = (e) =>{
@@ -37,7 +42,7 @@ class Create extends Component {
                     <button className="btn btn-info text-center" onClick={this.handleClick}>Logout</button>
                 : ''}
                 <h2>Add new blog entry</h2>
-                <form className="form-group" onSubmit={this.handleSubmit}>
+                <form className="form-group" onSubmit={this.handleSubmit.bind(this)}>
                     <input name="title" className="form-control my-3" placeholder="blog title" onChange={this.handleChange} id='title' required/>
                     <input name="country" className="form-control my-3" placeholder="country" onChange={this.handleChange} id='country' required/>
                     <input name="img_url" className="form-control my-3" placeholder="image url" onChange={this.handleChange} id='img_url' required/>
@@ -56,4 +61,4 @@ class Create extends Component {
         </div>
     }
 }
-export default Create;
+export default withRouter(Create);

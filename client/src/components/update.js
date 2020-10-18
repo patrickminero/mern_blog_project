@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
-
+import { withRouter } from 'react-router-dom'
 
 class Update extends Component {
-    state = {
-        id: null,
-        title: null,
-        img_url: null,
-        snippet: null,
-        body: null,
-        country: null,
+    constructor(props){
+        super(props)
+        this.state = {
+            id: null,
+            title: null,
+            img_url: null,
+            snippet: null,
+            body: null,
+            country: null,
+        }
     }
     
     handleChange = (e) => {
@@ -18,8 +21,8 @@ class Update extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
-        this.props.updateBlog(this.state)
+        this.props.updateBlog(this.state);
+        this.props.history.push('/all')
     }
     handleLoggin = (e) =>{
         e.preventDefault();
@@ -36,7 +39,7 @@ class Update extends Component {
                             <button className="btn btn-info text-center" onClick={this.handleClick}>Logout</button>
                         : ''}
                 <h2>Add new blog entry</h2>
-                <form className="form-group" onSubmit={this.handleSubmit}>
+                <form className="form-group" onSubmit={this.handleSubmit.bind(this)}>
                     <input name="id" className="form-control my-3" placeholder="blog id" onChange={this.handleChange} id='id' required/>
                     <input name="title" className="form-control my-3" placeholder="blog title" onChange={this.handleChange} id='title' required/>
                     <input name="country" className="form-control my-3" placeholder="country" onChange={this.handleChange} id='country' required/>
@@ -56,4 +59,4 @@ class Update extends Component {
         </div>
     }
 }
-export default Update;
+export default withRouter(Update);

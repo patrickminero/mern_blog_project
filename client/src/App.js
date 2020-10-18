@@ -32,14 +32,13 @@ state = {
   }
 
   updateBlog = (blog) =>{
-    console.log(blog)
     Axios({
       url:`blogs/${blog.id}`,
       method: 'PATCH',
       data: blog
     })
     .then((res)=>{ 
-      console.log(res)
+      alert(res.data)
     })
     .catch((error) =>{console.log(error)})
   }
@@ -74,6 +73,15 @@ state = {
     this.setState({loggedIn: false})
   }
 
+  sendMessage = (info) =>{
+    console.log(info)
+    Axios({
+      url: 'blogs/message',
+      method: 'POST',
+      data: info,
+    }).then(response => alert(response.data))
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -82,13 +90,13 @@ state = {
             <Switch>
               <Route exact path="/"component={Home}/>
               <Route exact path="/test"component={Test}/>
-              <Route path="/create" render={(props) => (<Create addBlog={this.addBlog} updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} logout={this.logout} loggin={this.loggin} props={this.props} />)}/>
-              <Route path="/update" render={(props) => (<Update updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} props={this.props} logout={this.logout} loggin={this.loggin} />)}/>
+              <Route path="/create" render={(props) => (<Create addBlog={this.addBlog} updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} logout={this.logout} loggin={this.loggin} props={props} />)}/>
+              <Route path="/update" render={(props) => (<Update updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} props={props} logout={this.logout} loggin={this.loggin} />)}/>
               <Route exact path="/all" render={(props) => (<AllBlogs loggedIn={this.state.loggedIn} props={props} deleteBlog={this.deleteBlog}/>)}/>
               <Route exact path="/gallery" render={(props) =>(<Gallery images={this.state.images} countries={this.state.countries} props={props}/>)}/>
               <Route path="/:id" component={DisplayBlog}/>
             </Switch>
-          <Footer/>
+          <Footer sendMessage={this.sendMessage}/>
         </div>
       </BrowserRouter>
     )

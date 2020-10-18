@@ -13,6 +13,7 @@ class Footer extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
+        this.props.sendMessage(this.state)
         console.log(this.state);
     }
     render() {
@@ -20,12 +21,12 @@ class Footer extends Component {
             <footer className="container mt-5">
                 <div className="row">
                     <div className="col col-lg-6 col-12" >
-                        <form className="form-group" onSubmit={this.handleSubmit}>
+                        <form method="POST" action="blogs/message" className="form-group" onSubmit={this.handleSubmit}>
                                 <h3 className="text-center">Get in touch.</h3>
-                                <input type="text" onChange={this.handleChange} className="form-control" id="name" placeholder="Your name..." required/>
-                                <input type="email" onChange={this.handleChange} className="form-control" id="email" placeholder="Your email..." required />
-                                <textarea className="form-control" onChange={this.handleChange} id="message" placeholder="Message..." cols="50" rows="5" required></textarea>
-                                <button id="submit" type="submit" className="btn btn-primary">Send</button>
+                                <input type="text" onChange={this.handleChange} className="form-control my-3" id="name" placeholder="Your name..." required/>
+                                <input type="email" onChange={this.handleChange} className="form-control my-3" id="email" placeholder="Your email..." required />
+                                <textarea className="form-control my-3" onChange={this.handleChange} id="message" placeholder="Message..." cols="50" rows="5" required></textarea>
+                                <button id="submit" type="submit" className="btn btn-primary my-3">Send</button>
                         </form>
                     </div>
                     <div className="col col-lg-6 col-12">

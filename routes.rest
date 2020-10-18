@@ -22,3 +22,14 @@ Content-Type: application/json
     "name": "patminero",
     "pass": "#SolarEclipse20!"
 }
+
+###
+
+POST http://localhost:5000/blogs/message
+Content-Type: application/json
+
+{
+    "name": "patminero",
+    "email": "email@email.com",
+    "message": "hola cuaquicuo"
+}
