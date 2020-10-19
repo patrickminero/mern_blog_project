@@ -5,7 +5,7 @@ let Home = () =>{
         <div>
             <div className="jumbotron jumbotron-fluid" id="hero">
                 <div className="container">
-                    <h1>Get rid of everything and go!</h1>
+                    <h1>Leave everything and go!</h1>
                     <h2>From working two jobs to travel through 4 continents, 25 countries and many wonderful experiences.</h2>
                 </div>
             </div>

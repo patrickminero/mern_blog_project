@@ -74,7 +74,6 @@ state = {
   }
 
   sendMessage = (info) =>{
-    console.log(info)
     Axios({
       url: 'blogs/message',
       method: 'POST',

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 class AllBlogs extends React.Component{
     state = {
-        blogs: [ ]
+        blogs: [ ],
     }
         
     

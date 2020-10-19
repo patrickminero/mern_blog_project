@@ -14,7 +14,6 @@ class Footer extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.sendMessage(this.state)
-        console.log(this.state);
     }
     render() {
         return (
