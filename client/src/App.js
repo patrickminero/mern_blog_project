@@ -88,9 +88,8 @@ state = {
           <NavBar loggedIn={this.state.loggedIn}/>
             <Switch>
               <Route exact path="/"component={Home}/>
-              <Route exact path="/test"component={Test}/>
-              <Route path="/create" render={(props) => (<Create addBlog={this.addBlog} updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} logout={this.logout} loggin={this.loggin} props={props} />)}/>
-              <Route path="/update" render={(props) => (<Update updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} props={props} logout={this.logout} loggin={this.loggin} />)}/>
+              <Route exact path="/create" render={(props) => (<Create addBlog={this.addBlog} updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} logout={this.logout} loggin={this.loggin} props={props} />)}/>
+              <Route exact path="/update" render={(props) => (<Update updateBlog={this.updateBlog} loggedIn={this.state.loggedIn} props={props} logout={this.logout} loggin={this.loggin} />)}/>
               <Route exact path="/all" render={(props) => (<AllBlogs loggedIn={this.state.loggedIn} props={props} deleteBlog={this.deleteBlog}/>)}/>
               <Route exact path="/gallery" render={(props) =>(<Gallery images={this.state.images} countries={this.state.countries} props={props}/>)}/>
               <Route path="/:id" component={DisplayBlog}/>
