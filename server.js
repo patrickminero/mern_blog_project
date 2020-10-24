@@ -13,9 +13,9 @@ app.use('/', blogsRouter)
 
 const PORT = process.env.PORT || 5000;
 
-// if(process.env.NODE_ENV === 'production'){
-//     app.use(express.static('client/build'))
-// }
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'))
+}
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(app.listen(PORT, () => console.log(`Listening on port ${PORT}`)))
