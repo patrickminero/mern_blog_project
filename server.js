@@ -14,7 +14,7 @@ app.use('/', blogsRouter)
 const PORT = process.env.PORT || 5000;
 
 if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('client/public'))
+    app.use(express.static('client/build'))
 }
 
 mongoose.connect('mongodb+srv://patminero:%23SolarEclipse20%21@cluster0.nnrg5.mongodb.net/personal?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
