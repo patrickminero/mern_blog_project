@@ -70,7 +70,7 @@ state = {
   }
 
   logout = () =>{
-    this.setState({loggedIn: false})
+    this.setState({loggedIn: true})
   }
 
   sendMessage = (info) =>{
