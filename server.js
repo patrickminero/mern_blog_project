@@ -17,7 +17,7 @@ if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'))
 }
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://patminero:%23SolarEclipse20%21@cluster0.nnrg5.mongodb.net/personal?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
 .then(app.listen(PORT, () => console.log(`Listening on port ${PORT}`)))
 
 const db = mongoose.connection

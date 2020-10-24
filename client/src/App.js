@@ -8,10 +8,7 @@ import Update from './components/update'
 import Footer from './components/footer';
 import DisplayBlog from './components/blog';
 import Gallery from './components/gallery';
-import Test from './components/test'
 import Axios from 'axios';
-
-
 
 class App extends Component {
 state = {
@@ -70,7 +67,7 @@ state = {
   }
 
   logout = () =>{
-    this.setState({loggedIn: true})
+    this.setState({loggedIn: false})
   }
 
   sendMessage = (info) =>{
