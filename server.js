@@ -9,7 +9,7 @@ app.use(cors({ origin: true }))
 app.use(bodyParser.json())
 
 const blogsRouter = require('./client/src/routes/blogs.js')
-app.use('/blogs', blogsRouter)
+app.use('/', blogsRouter)
 
 const PORT = process.env.PORT || 5000;
 
@@ -17,7 +17,7 @@ if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'))
 }
 
-mongoose.connect("mongodb+srv://patminero:%23SolarEclipse20%21@cluster0.nnrg5.mongodb.net/personal?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(app.listen(PORT, () => console.log(`Listening on port ${PORT}`)))
 
 const db = mongoose.connection

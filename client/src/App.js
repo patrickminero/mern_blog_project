@@ -18,7 +18,7 @@ state = {
 
   addBlog = (blog) =>{
     Axios({
-      url:'blogs/save',
+      url:'/save',
       method: 'POST',
       data: blog
     })
@@ -30,7 +30,7 @@ state = {
 
   updateBlog = (blog) =>{
     Axios({
-      url:`blogs/${blog.id}`,
+      url:`/${blog.id}`,
       method: 'PATCH',
       data: blog
     })
@@ -42,7 +42,7 @@ state = {
 
   deleteBlog = (id) =>{
     Axios({
-      url: `blogs/${id}`,
+      url: `/${id}`,
       method: 'DELETE',
       data: id,
     })
@@ -55,7 +55,7 @@ state = {
   loggin = (name, pass) =>{
     let info = {"name": name, "pass": pass}
     Axios({
-      url: '/blogs/login',
+      url: '/login',
       method: 'POST',
       data: info,
     }).then(res => {
@@ -72,7 +72,7 @@ state = {
 
   sendMessage = (info) =>{
     Axios({
-      url: 'blogs/message',
+      url: '/message',
       method: 'POST',
       data: info,
     }).then(response => alert(response.data))
