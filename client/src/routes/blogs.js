@@ -100,6 +100,7 @@ router.post('/message', async (req, res) =>{
     from: '"Nodemailer" patrickminero@outlook.com', // sender address
     to: "patrickminerovalencia@gmail.com", // list of receivers
     subject: "New message from Let Everything and go! ", // Subject line
+    // text: "Hello world?", // plain text body
     html: email, // html body
   }
 

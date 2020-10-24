@@ -8,7 +8,10 @@ import Update from './components/update'
 import Footer from './components/footer';
 import DisplayBlog from './components/blog';
 import Gallery from './components/gallery';
+import Test from './components/test'
 import Axios from 'axios';
+
+
 
 class App extends Component {
 state = {
@@ -18,7 +21,7 @@ state = {
 
   addBlog = (blog) =>{
     Axios({
-      url:'/save',
+      url:'blogs/save',
       method: 'POST',
       data: blog
     })
@@ -30,7 +33,7 @@ state = {
 
   updateBlog = (blog) =>{
     Axios({
-      url:`/${blog.id}`,
+      url:`blogs/${blog.id}`,
       method: 'PATCH',
       data: blog
     })
@@ -42,7 +45,7 @@ state = {
 
   deleteBlog = (id) =>{
     Axios({
-      url: `/${id}`,
+      url: `blogs/${id}`,
       method: 'DELETE',
       data: id,
     })
@@ -55,7 +58,7 @@ state = {
   loggin = (name, pass) =>{
     let info = {"name": name, "pass": pass}
     Axios({
-      url: '/login',
+      url: '/blogs/login',
       method: 'POST',
       data: info,
     }).then(res => {
@@ -72,7 +75,7 @@ state = {
 
   sendMessage = (info) =>{
     Axios({
-      url: '/message',
+      url: 'blogs/message',
       method: 'POST',
       data: info,
     }).then(response => alert(response.data))

@@ -7,7 +7,7 @@ state = {
     api_key:'OgQ1koILALSpAUUVwUHbwAnY3-uVlHWF6GicDYOtYdc',
     images: [ ],
     countries: [],
-    filter: 'All',
+    filter: 'all',
 }
 async componentDidMount(){
     let dataArray = await (await (fetch(`https://api.unsplash.com//users/patminero/collections?client_id=${this.state.api_key}`))).json()
@@ -66,14 +66,13 @@ render(){
             </div>
         )
     })
-        return filter === 'All' ? (
+        return filter === 'all' ? (
         <div>
             <div className="container d-flex p-2 info btn-group btn-block">
                 <button className="btn btn-light btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Filter by country
                 </button>
                 <div className="dropdown-menu w-100">
-                    <li className="text-center text-info list-item" key={Math.random()} onClick={this.handleClick.bind(this)}>All</li>
                     {countriesList}
                 </div>
         </div>
@@ -87,7 +86,6 @@ render(){
                     Filter by country
                 </button>
                 <div className="dropdown-menu w-100">
-                    <li className="text-center text-info list-item" key={Math.random()} onClick={this.handleClick.bind(this)}>All</li>
                     {countriesList}
                 </div>
             </div>
@@ -99,3 +97,33 @@ render(){
     }
 }
 export default withRouter(Gallery)
+
+//     const imageArray = this.state.images.length ? (
+//     this.state.images.map(image =>{
+//         return(
+//             <div className="mb-3 pics animation all 2" key={image.id + Math.random()}>
+//                 <a href={image.src} target="_blank" rel="noopener noreferrer"><img className="img-fluid" src={image.src} filter={image.category} alt={image.category}/></a>
+//             </div>
+//         )
+//     })) : (<div className="text-center">Loading images</div>)
+            
+// const countriesList = this.state.countries.map(country =>{
+//     return(
+//         <li className="text-center text-info list-item" key={Math.random()}>{country}</li>
+//     )
+// })
+// return(
+//     <div>
+        // <div className="container d-flex p-2 info btn-group btn-block">
+        //     <button className="btn btn-light btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        //         Filter by country
+        //     </button>
+        //     <div className="dropdown-menu w-100">
+        //         {countriesList}
+        //     </div>
+        // </div>
+//         <div className="gallery" id="gallery">
+//             {imageArray}
+//         </div>            
+//     </div>
+// )

@@ -10,7 +10,7 @@ class AllBlogs extends React.Component{
         
     
 componentDidMount(){
-    axios.get('/getblogs')
+    axios.get('/blogs/getblogs')
         .then(res => {
         this.setState({blogs: res.data})
         })
