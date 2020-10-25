@@ -7,7 +7,7 @@ state = {
     api_key:'OgQ1koILALSpAUUVwUHbwAnY3-uVlHWF6GicDYOtYdc',
     images: [ ],
     countries: [],
-    filter: 'all',
+    filter: 'All',
 }
 async componentDidMount(){
     let dataArray = await (await (fetch(`https://api.unsplash.com//users/patminero/collections?client_id=${this.state.api_key}`))).json()
@@ -66,13 +66,14 @@ render(){
             </div>
         )
     })
-        return filter === 'all' ? (
+        return filter === 'All' ? (
         <div>
             <div className="container d-flex p-2 info btn-group btn-block">
                 <button className="btn btn-light btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Filter by country
                 </button>
                 <div className="dropdown-menu w-100">
+                <li className="text-center text-info list-item" key={Math.random()} onClick={this.handleClick.bind(this)}>All</li>
                     {countriesList}
                 </div>
         </div>
@@ -86,6 +87,7 @@ render(){
                     Filter by country
                 </button>
                 <div className="dropdown-menu w-100">
+                <li className="text-center text-info list-item" key={Math.random()} onClick={this.handleClick.bind(this)}>All</li>
                     {countriesList}
                 </div>
             </div>
