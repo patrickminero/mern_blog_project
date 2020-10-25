@@ -24,12 +24,12 @@ class NavBar extends React.Component{
                         <li className="nav-item">
                             <Link to="/gallery" className="nav-link text-center">Gallery</Link>
                         </li>
-                        {this.props.loggedIn ? <li className="nav-item">
+                        <li className="nav-item">
                             <Link to="/create" className="nav-link text-center">Create Blog</Link>
-                        </li> : ''}
-                        {this.props.loggedIn ? <li className="nav-item">
+                        </li>
+                        <li className="nav-item">
                             <Link to="/update" className="nav-link text-center">Update Blog</Link>
-                        </li> : ''}
+                        </li>
                     </ul>
                 </div>
             </nav>
