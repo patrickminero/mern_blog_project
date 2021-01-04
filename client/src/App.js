@@ -11,7 +11,6 @@ import Gallery from './components/gallery';
 import Axios from 'axios';
 
 
-
 class App extends Component {
 state = {
     data: null,

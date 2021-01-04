@@ -11,6 +11,8 @@ app.use(bodyParser.json())
 const blogsRouter = require('./client/src/routes/blogs.js')
 app.use('/blogs', blogsRouter)
 
+
+
 const PORT = process.env.PORT || 5000;
 
 if(process.env.NODE_ENV === 'production'){
